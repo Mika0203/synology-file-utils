@@ -45,4 +45,6 @@ export async function login({
       sid: response.data.data.sid,
     });
   }
+
+  return response;
 }
