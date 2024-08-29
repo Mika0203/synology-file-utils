@@ -1,0 +1,33 @@
+{
+  "name": "synology-file-utils",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.mts",
+        "default": "./dist/index.mjs"
+      },
+      "require": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      }
+    },
+    "./package.json": "./package.json"
+  },
+  "devDependencies": {
+    "tsup": "8.2.4",
+    "@types/bun": "latest"
+  },
+  "scripts": {
+    "build": "tsup"
+  },
+  "files": [
+    "./index.d.ts"
+  ],
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  }
+}
