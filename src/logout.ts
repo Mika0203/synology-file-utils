@@ -1,4 +1,5 @@
 import axios from "axios";
+import { SynologyAPI } from "./api";
 import { synologyContoller } from "./controller";
 
 interface LogoutResponse {
@@ -21,10 +22,9 @@ export function logout() {
   axios
     .get<LogoutResponse>(url, {
       params: {
-        api: "SYNO.API.Auth",
+        api: SynologyAPI.AUTH,
         version: 6,
         method: "logout",
-        //
         session: "FileStation",
         format: "cookie",
       },

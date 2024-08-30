@@ -1,4 +1,5 @@
 import axios from "axios";
+import { SynologyAPI } from "./api";
 import { synologyContoller } from "./controller";
 
 interface ListReponse {
@@ -20,7 +21,7 @@ export async function list() {
   const url = `${process.env.SYNOLOGY_URL}/webapi/entry.cgi`;
   const response = await axios.get<ListReponse>(url, {
     params: {
-      api: "SYNO.FileStation.List",
+      api: SynologyAPI.LIST,
       version: 2,
       method: "list_share",
       session: "FileStation",
@@ -29,5 +30,9 @@ export async function list() {
     },
   });
 
-  return response;
+  if (!response.data.success) {
+    throw new Error("Failed to list shares");
+  }
+
+  return response.data.data;
 }

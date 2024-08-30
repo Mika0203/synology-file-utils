@@ -1,4 +1,5 @@
 import axios from "axios";
+import { SynologyAPI } from "./api";
 import { synologyContoller } from "./controller";
 
 interface ConnectResponse {
@@ -27,7 +28,7 @@ export async function login({
   const url = `${process.env.SYNOLOGY_URL}/webapi/entry.cgi`;
   const response = await axios.get<ConnectResponse>(url, {
     params: {
-      api: "SYNO.API.Auth",
+      api: SynologyAPI.AUTH,
       version: 6,
       method: "login",
       //
